@@ -1,0 +1,1217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professional Website Design & Development | Harry Adam</title>
+    <meta name="description" content="High-converting websites starting at $100. Fast, secure, zero hosting fees. Perfect for businesses, portfolios, and startups.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: linear-gradient(135deg, #090D16 0%, #0f172a 50%, #0d1b2a 100%);
+            color: #e5e7eb;
+            overflow-x: hidden;
+        }
+
+        /* Glassmorphism Effect */
+        .glass {
+            background: rgba(15, 23, 42, 0.6);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(99, 102, 241, 0.2);
+            border-radius: 1rem;
+        }
+
+        .glass-hover:hover {
+            background: rgba(15, 23, 42, 0.8);
+            border-color: rgba(99, 102, 241, 0.4);
+            transition: all 0.3s ease;
+        }
+
+        /* Gradient Text */
+        .gradient-text {
+            background: linear-gradient(135deg, #6366F1 0%, #10B981 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Neon Glow Effects */
+        .neon-glow {
+            text-shadow: 0 0 20px rgba(99, 102, 241, 0.6), 0 0 40px rgba(16, 185, 129, 0.3);
+        }
+
+        .glow-card {
+            box-shadow: 0 0 30px rgba(99, 102, 241, 0.2), inset 0 1px 1px rgba(255, 255, 255, 0.1);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .glow-card:hover {
+            box-shadow: 0 0 50px rgba(99, 102, 241, 0.4), 0 20px 40px rgba(99, 102, 241, 0.15), inset 0 1px 1px rgba(255, 255, 255, 0.1);
+            transform: translateY(-8px);
+        }
+
+        /* CTA Button Glow */
+        .btn-glow {
+            background: linear-gradient(135deg, #10B981 0%, #059669 100%);
+            box-shadow: 0 0 20px rgba(16, 185, 129, 0.4);
+            transition: all 0.3s ease;
+        }
+
+        .btn-glow:hover {
+            box-shadow: 0 0 40px rgba(16, 185, 129, 0.6), 0 10px 30px rgba(16, 185, 129, 0.2);
+            transform: translateY(-2px);
+        }
+
+        /* Pricing Card Highlight */
+        .pricing-highlighted {
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.15) 0%, rgba(16, 185, 129, 0.08) 100%);
+            border: 2px solid rgba(16, 185, 129, 0.4);
+        }
+
+        /* Accordion Animation */
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+
+        .accordion-content.active {
+            max-height: 500px;
+        }
+
+        /* Smooth Fade In */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            animation: fadeIn 0.6s ease-out;
+        }
+
+        /* Icon Styling */
+        .icon-box {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            border-radius: 0.75rem;
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.2), rgba(16, 185, 129, 0.1));
+        }
+
+        /* Mobile Menu Animation */
+        .mobile-menu {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+
+        .mobile-menu.active {
+            max-height: 400px;
+        }
+
+        /* Checkmark Style */
+        .checkmark {
+            color: #10B981;
+            font-weight: 600;
+            margin-right: 8px;
+        }
+
+        /* Portfolio Grid */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+            padding: 0;
+        }
+
+        @media (max-width: 768px) {
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Floating CTA */
+        .floating-cta {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 40;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                box-shadow: 0 0 20px rgba(16, 185, 129, 0.4);
+            }
+            50% {
+                box-shadow: 0 0 40px rgba(16, 185, 129, 0.6);
+            }
+        }
+
+        @media (max-width: 640px) {
+            .floating-cta {
+                bottom: 20px;
+                right: 20px;
+            }
+        }
+
+        /* Input Styling */
+        input, textarea, select {
+            background: rgba(30, 41, 59, 0.8) !important;
+            border: 1px solid rgba(99, 102, 241, 0.2) !important;
+            color: #e5e7eb !important;
+            transition: all 0.3s ease !important;
+        }
+
+        input:focus, textarea:focus, select:focus {
+            background: rgba(30, 41, 59, 1) !important;
+            border-color: rgba(99, 102, 241, 0.6) !important;
+            outline: none !important;
+            box-shadow: 0 0 20px rgba(99, 102, 241, 0.2) !important;
+        }
+
+        input::placeholder, textarea::placeholder {
+            color: #9ca3af;
+        }
+
+        /* Responsive Typography */
+        @media (max-width: 640px) {
+            h1 {
+                font-size: 1.875rem !important;
+            }
+            h2 {
+                font-size: 1.5rem !important;
+            }
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-b from-slate-950 to-slate-900 text-gray-100">
+    <!-- Navigation -->
+    <nav class="fixed w-full top-0 z-50 glass border-b border-indigo-500/20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo -->
+                <div class="flex items-center gap-2 group cursor-pointer">
+                    <div class="w-10 h-10 bg-gradient-to-br from-indigo-500 to-emerald-500 rounded-lg flex items-center justify-center font-bold text-white">
+                        HA
+                    </div>
+                    <span class="text-xl font-bold gradient-text hidden sm:inline">Harry Adam</span>
+                </div>
+
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex gap-8">
+                    <a href="#why-us" class="text-gray-300 hover:text-indigo-400 transition">Why Us</a>
+                    <a href="#pricing" class="text-gray-300 hover:text-indigo-400 transition">Pricing</a>
+                    <a href="#services" class="text-gray-300 hover:text-indigo-400 transition">Services</a>
+                    <a href="#portfolio" class="text-gray-300 hover:text-indigo-400 transition">Portfolio</a>
+                    <a href="#faq" class="text-gray-300 hover:text-indigo-400 transition">FAQ</a>
+                    <a href="#contact" class="text-gray-300 hover:text-indigo-400 transition">Contact</a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-btn" class="md:hidden text-indigo-400 hover:text-indigo-300 focus:outline-none transition" aria-label="Toggle menu">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+
+            <!-- Mobile Menu -->
+            <div id="mobile-menu" class="mobile-menu md:hidden bg-slate-900/80 rounded-lg mt-2 p-4 space-y-3">
+                <a href="#why-us" class="block text-gray-300 hover:text-indigo-400 transition py-2">Why Us</a>
+                <a href="#pricing" class="block text-gray-300 hover:text-indigo-400 transition py-2">Pricing</a>
+                <a href="#services" class="block text-gray-300 hover:text-indigo-400 transition py-2">Services</a>
+                <a href="#portfolio" class="block text-gray-300 hover:text-indigo-400 transition py-2">Portfolio</a>
+                <a href="#faq" class="block text-gray-300 hover:text-indigo-400 transition py-2">FAQ</a>
+                <a href="#contact" class="block text-gray-300 hover:text-indigo-400 transition py-2">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="hero" class="min-h-screen flex items-center justify-center pt-20 pb-20 px-4">
+        <div class="max-w-4xl mx-auto text-center">
+            <!-- Trust Badges -->
+            <div class="mb-8 flex flex-wrap justify-center gap-4">
+                <div class="inline-flex items-center gap-2 glass px-4 py-2 rounded-full text-sm">
+                    <span class="text-emerald-400">⚡</span>
+                    <span>Lightning Fast</span>
+                </div>
+                <div class="inline-flex items-center gap-2 glass px-4 py-2 rounded-full text-sm">
+                    <span class="text-indigo-400">🔒</span>
+                    <span>Bank-Level Security</span>
+                </div>
+                <div class="inline-flex items-center gap-2 glass px-4 py-2 rounded-full text-sm">
+                    <span class="text-emerald-400">💰</span>
+                    <span>Zero Monthly Fees</span>
+                </div>
+            </div>
+
+            <!-- Main Headline -->
+            <h1 class="text-5xl md:text-7xl font-black mb-6 gradient-text fade-in leading-tight">
+                Website builder vector digitizing<br>and patch with logo making
+            </h1>
+
+            <!-- Subheadline -->
+            <p class="text-xl md:text-2xl text-gray-300 mb-8 max-w-2xl mx-auto fade-in" style="animation-delay: 0.1s;">
+                Lightning-fast, secure, stunning websites built and deployed in days, not months. Starting at just <span class="text-emerald-400 font-bold">$100</span>. Zero hosting fees. Zero technical debt.
+            </p>
+
+            <!-- CTA Buttons -->
+            <div class="flex flex-col sm:flex-row gap-4 justify-center mb-12 fade-in" style="animation-delay: 0.2s;">
+                <button onclick="document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })" class="btn-glow px-8 py-4 rounded-lg font-bold text-white text-lg transition-all duration-300">
+                    Get Started for $100
+                </button>
+                <button onclick="document.getElementById('pricing').scrollIntoView({ behavior: 'smooth' })" class="px-8 py-4 rounded-lg font-bold border-2 border-indigo-500 text-indigo-300 hover:bg-indigo-500/10 transition-all duration-300">
+                    Explore All Packages
+                </button>
+            </div>
+
+            <!-- Scroll Indicator -->
+            <div class="mt-16 animate-bounce">
+                <svg class="w-8 h-8 mx-auto text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+                </svg>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us Section -->
+    <section id="why-us" class="py-20 px-4 bg-gradient-to-b from-slate-900 to-slate-950">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold mb-6">Why Choose Harry Adam?</h2>
+                <p class="text-xl text-gray-400 max-w-3xl mx-auto">
+                    We deliver enterprise-grade websites at startup prices. No bloated platforms. No monthly hosting fees. Just pure, optimized code deployed on GitHub Pages.
+                </p>
+            </div>
+
+            <!-- Features Grid -->
+            <div class="relative">
+                <!-- Why Choose Us Slider -->
+                <div class="overflow-hidden">
+                    <div class="why-us-slider flex transition-transform duration-500 ease-out" style="transform: translateX(0);">
+                        <!-- Feature 1 -->
+                        <div class="why-us-slide min-w-full md:min-w-1/2 px-4">
+                            <div class="glow-card glass p-8 rounded-xl h-full">
+                                <div class="icon-box mb-6">
+                                    <span class="text-2xl">⚡</span>
+                                </div>
+                                <h3 class="text-xl font-bold mb-3">Blazing Fast</h3>
+                                <p class="text-gray-400">Static site deployment means sub-second load times. No database queries. No server lag.</p>
+                            </div>
+                        </div>
+
+                        <!-- Feature 2 -->
+                        <div class="why-us-slide min-w-full md:min-w-1/2 px-4">
+                            <div class="glow-card glass p-8 rounded-xl h-full">
+                                <div class="icon-box mb-6">
+                                    <span class="text-2xl">🔒</span>
+                                </div>
+                                <h3 class="text-xl font-bold mb-3">Bulletproof Security</h3>
+                                <p class="text-gray-400">GitHub's infrastructure + automated SSL. No database vulnerabilities. Zero attack surface.</p>
+                            </div>
+                        </div>
+
+                        <!-- Feature 3 -->
+                        <div class="why-us-slide min-w-full md:min-w-1/2 px-4">
+                            <div class="glow-card glass p-8 rounded-xl h-full">
+                                <div class="icon-box mb-6">
+                                    <span class="text-2xl">💾</span>
+                                </div>
+                                <h3 class="text-xl font-bold mb-3">Zero Maintenance</h3>
+                                <p class="text-gray-400">No server updates. No dependency patches. Pure HTML, CSS, and JS deployed on GitHub.</p>
+                            </div>
+                        </div>
+
+                        <!-- Feature 4 -->
+                        <div class="why-us-slide min-w-full md:min-w-1/2 px-4">
+                            <div class="glow-card glass p-8 rounded-xl h-full">
+                                <div class="icon-box mb-6">
+                                    <span class="text-2xl">💰</span>
+                                </div>
+                                <h3 class="text-xl font-bold mb-3">Save $100s Yearly</h3>
+                                <p class="text-gray-400">No WordPress hosting. No monthly fees. Lifetime free hosting. Your site owns itself.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Why Us Controls -->
+                <button onclick="whyUsSliderPrev()" class="absolute left-0 top-1/2 -translate-y-1/2 z-10 -ml-6 md:-ml-12 bg-indigo-500/80 hover:bg-indigo-500 text-white rounded-full p-3 transition">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                    </svg>
+                </button>
+                <button onclick="whyUsSliderNext()" class="absolute right-0 top-1/2 -translate-y-1/2 z-10 -mr-6 md:-mr-12 bg-indigo-500/80 hover:bg-indigo-500 text-white rounded-full p-3 transition">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                    </svg>
+                </button>
+            </div>
+
+            <!-- Comparison Section -->
+            <div class="mt-16 glass rounded-xl p-8 border-2 border-indigo-500/30">
+                <h3 class="text-2xl font-bold mb-8 text-center">The True Cost of Web Solutions</h3>
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div>
+                        <h4 class="text-lg font-bold text-red-400 mb-4">❌ Traditional WordPress</h4>
+                        <ul class="space-y-3 text-gray-400">
+                            <li class="flex items-start gap-2">
+                                <span>•</span>
+                                <span>$15-50/month hosting</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <span>•</span>
+                                <span>Slow & bloated</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <span>•</span>
+                                <span>Security patches required</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <span>•</span>
+                                <span>Build time: weeks</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="text-lg font-bold text-yellow-400 mb-4">⚠️ DIY Builders (Wix, Squarespace)</h4>
+                        <ul class="space-y-3 text-gray-400">
+                            <li class="flex items-start gap-2">
+                                <span>•</span>
+                                <span>$12-30/month minimum</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <span>•</span>
+                                <span>Limited customization</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <span>•</span>
+                                <span>Vendor lock-in</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <span>•</span>
+                                <span>Build time: days to weeks</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="text-lg font-bold text-emerald-400 mb-4">✅ Harry Adam (GitHub Pages)</h4>
+                        <ul class="space-y-3 text-gray-400">
+                            <li class="flex items-start gap-2">
+                                <span>•</span>
+                                <span>$0/month forever</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <span>•</span>
+                                <span>Fully customizable</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <span>•</span>
+                                <span>Owns your code</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <span>•</span>
+                                <span>Build time: days</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="py-20 px-4 bg-gradient-to-b from-slate-950 to-slate-900">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold mb-6">Simple, Transparent Pricing</h2>
+                <p class="text-xl text-gray-400 max-w-3xl mx-auto">
+                    No hidden fees. No surprise charges. What you see is what you get.
+                </p>
+            </div>
+
+            <!-- Pricing Cards Grid -->
+            <div class="grid md:grid-cols-3 gap-8 mb-16">
+                <!-- Tier 1: $100 -->
+                <div class="glow-card glass rounded-xl p-8 border-2 border-indigo-500/30 flex flex-col">
+                    <div class="mb-6">
+                        <h3 class="text-2xl font-bold mb-2">Starter Package</h3>
+                        <p class="text-gray-400 text-sm mb-4">Perfect for launching fast</p>
+                        <div class="flex items-baseline gap-2">
+                            <span class="text-5xl font-bold text-emerald-400">$100</span>
+                            <span class="text-gray-400">one-time</span>
+                        </div>
+                    </div>
+
+                    <div class="mb-8 pb-8 border-b border-indigo-500/20">
+                        <p class="text-gray-300 text-sm">Professional website ready for launch</p>
+                    </div>
+
+                    <ul class="space-y-4 mb-8 flex-grow">
+                        <li class="flex items-start gap-3">
+                            <span class="checkmark text-emerald-400">✓</span>
+                            <span class="text-gray-300">Multi-section professional website</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="checkmark text-emerald-400">✓</span>
+                            <span class="text-gray-300">Mobile responsive design</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="checkmark text-emerald-400">✓</span>
+                            <span class="text-gray-300">Performance optimized</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="checkmark text-emerald-400">✓</span>
+                            <span class="text-gray-300">GitHub Pages deployment</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="checkmark text-emerald-400">✓</span>
+                            <span class="text-gray-300">Free hosting forever</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="checkmark text-emerald-400">✓</span>
+                            <span class="text-gray-300">SSL/HTTPS included</span>
+                        </li>
+                    </ul>
+
+                    <button onclick="document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })" class="w-full btn-glow text-white font-bold py-3 rounded-lg transition-all">
+                        Choose Starter
+                    </button>
+                </div>
+
+                <!-- Tier 2: $150 - MOST POPULAR -->
+                <div class="glow-card pricing-highlighted rounded-xl p-8 border-2 border-emerald-500/50 flex flex-col relative">
+                    <div class="absolute -top-4 left-6 bg-gradient-to-r from-indigo-500 to-emerald-500 px-4 py-1 rounded-full text-sm font-bold text-white">
+                        BEST VALUE
+                    </div>
+
+                    <div class="mb-6">
+                        <h3 class="text-2xl font-bold mb-2">Custom Domain Package</h3>
+                        <p class="text-gray-400 text-sm mb-4">Most popular for businesses</p>
+                        <div class="flex items-baseline gap-2">
+                            <span class="text-5xl font-bold text-emerald-400">$150</span>
+                            <span class="text-gray-400">one-time</span>
+                        </div>
+                    </div>
+
+                    <div class="mb-8 pb-8 border-b border-emerald-500/20">
+                        <p class="text-gray-300 text-sm">Everything in Starter PLUS branded identity</p>
+                    </div>
+
+                    <ul class="space-y-4 mb-8 flex-grow">
+                        <li class="flex items-start gap-3">
+                            <span class="checkmark text-emerald-400">✓</span>
+                            <span class="text-gray-300">Everything in $100 Package</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="checkmark text-emerald-400">✓</span>
+                            <span class="text-gray-300">Custom domain setup (.com, .net, .org)</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="checkmark text-emerald-400">✓</span>
+                            <span class="text-gray-300">DNS record management</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="checkmark text-emerald-400">✓</span>
+                            <span class="text-gray-300">Domain mapping & configuration</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="checkmark text-emerald-400">✓</span>
+                            <span class="text-gray-300">Professional email setup guidance</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="checkmark text-emerald-400">✓</span>
+                            <span class="text-gray-300">SEO optimization included</span>
+                        </li>
+                    </ul>
+
+                    <button onclick="document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })" class="w-full btn-glow text-white font-bold py-3 rounded-lg transition-all">
+                        Choose Custom Domain
+                    </button>
+                </div>
+
+                <!-- Tier 3: Custom Pricing -->
+                <div class="glow-card glass rounded-xl p-8 border-2 border-indigo-500/30 flex flex-col">
+                    <div class="mb-6">
+                        <h3 class="text-2xl font-bold mb-2">Enterprise & Custom Apps</h3>
+                        <p class="text-gray-400 text-sm mb-4">For complex requirements</p>
+                        <div class="flex items-baseline gap-2">
+                            <span class="text-4xl font-bold text-emerald-400">Depends on</span>
+                        </div>
+                        <div class="text-3xl font-bold text-emerald-400 mt-2">Customization</div>
+                    </div>
+
+                    <div class="mb-8 pb-8 border-b border-indigo-500/20">
+                        <p class="text-gray-300 text-sm">Dynamic features, custom logic, advanced integrations</p>
+                    </div>
+
+                    <ul class="space-y-4 mb-8 flex-grow">
+                        <li class="flex items-start gap-3">
+                            <span class="checkmark text-emerald-400">✓</span>
+                            <span class="text-gray-300">Custom web applications</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="checkmark text-emerald-400">✓</span>
+                            <span class="text-gray-300">Dynamic interactive components</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="checkmark text-emerald-400">✓</span>
+                            <span class="text-gray-300">Complex animations & effects</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="checkmark text-emerald-400">✓</span>
+                            <span class="text-gray-300">Database integration</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="checkmark text-emerald-400">✓</span>
+                            <span class="text-gray-300">Custom API integrations</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="checkmark text-emerald-400">✓</span>
+                            <span class="text-gray-300">User authentication & authorization</span>
+                        </li>
+                    </ul>
+
+                    <button onclick="document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })" class="w-full btn-glow text-white font-bold py-3 rounded-lg transition-all">
+                        Get Enterprise Quote
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Patch Pricing Section -->
+    <section class="py-16 px-4 bg-gradient-to-b from-slate-900 to-slate-950">
+        <div class="max-w-5xl mx-auto">
+            <div class="text-center mb-12">
+                <h3 class="text-3xl md:text-4xl font-bold mb-4">Additional Services - Patch</h3>
+                <p class="text-gray-400">Patch depends on size and quantity</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="glass rounded-xl p-8 border-2 border-indigo-500/30">
+                    <h3 class="text-2xl font-bold mb-6 text-indigo-400">Logo</h3>
+                    <ul class="space-y-4">
+                        <li class="flex justify-between items-center py-3 border-b border-indigo-500/20">
+                            <span class="text-gray-300">Small</span>
+                            <span class="text-xl font-bold text-emerald-400">$5</span>
+                        </li>
+                        <li class="flex justify-between items-center py-3 border-b border-indigo-500/20">
+                            <span class="text-gray-300">Hard</span>
+                            <span class="text-xl font-bold text-emerald-400">$10</span>
+                        </li>
+                        <li class="flex justify-between items-center py-3">
+                            <span class="text-gray-300">Advance</span>
+                            <span class="text-xl font-bold text-violet-400">Custom Quote</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="glass rounded-xl p-8 border-2 border-emerald-500/30">
+                    <h3 class="text-2xl font-bold mb-6 text-emerald-400">Patch</h3>
+                    <div class="flex items-center justify-center h-32">
+                        <p class="text-center text-gray-300 text-lg">
+                            <span class="font-bold">Patch</span> = Depend for size and quantity
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Pricing Section -->
+    <section id="services" class="py-20 px-4 bg-gradient-to-b from-slate-950 to-slate-900">
+        <div class="max-w-5xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold mb-6">Services & Quick Pricing</h2>
+                <p class="text-xl text-gray-400 max-w-3xl mx-auto">
+                    Our specialized services with transparent pricing
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Embroidery Digitizing Card -->
+                <div class="glow-card glass rounded-xl p-8 border-2 border-indigo-500/30">
+                    <h3 class="text-2xl font-bold mb-6 text-indigo-400">Embroidery Digitizing</h3>
+                    <ul class="space-y-4">
+                        <li class="flex justify-between items-center py-3 border-b border-indigo-500/20">
+                            <span class="text-gray-300">Left Chest / Cap</span>
+                            <span class="text-xl font-bold text-emerald-400">$5</span>
+                        </li>
+                        <li class="flex justify-between items-center py-3 border-b border-indigo-500/20">
+                            <span class="text-gray-300">Jacket Back</span>
+                            <span class="text-xl font-bold text-emerald-400">$25</span>
+                        </li>
+                    </ul>
+                    <p class="text-gray-400 text-sm mt-6">
+                        Professional embroidery digitizing for all placement sizes. Quick turnaround, high-quality files.
+                    </p>
+                </div>
+
+                <!-- Vector Art Magic Card -->
+                <div class="glow-card glass rounded-xl p-8 border-2 border-emerald-500/30">
+                    <h3 class="text-2xl font-bold mb-6 text-emerald-400">Vector Art Magic</h3>
+                    <ul class="space-y-4">
+                        <li class="flex justify-between items-center py-3 border-b border-emerald-500/20">
+                            <span class="text-gray-300">Single Alpha / Simple / Medium</span>
+                            <span class="text-xl font-bold text-emerald-400">$5</span>
+                        </li>
+                        <li class="flex justify-between items-center py-3 border-b border-emerald-500/20">
+                            <span class="text-gray-300">Complex</span>
+                            <span class="text-xl font-bold text-emerald-400">$12</span>
+                        </li>
+                        <li class="flex justify-between items-center py-3">
+                            <span class="text-gray-300">Advanced</span>
+                            <span class="text-xl font-bold text-violet-400">Custom Quote</span>
+                        </li>
+                    </ul>
+                    <p class="text-gray-400 text-sm mt-6">
+                        High-quality vector conversion from any format. Perfect for logos, artwork & designs.
+                    </p>
+                </div>
+            </div>
+
+            <div class="text-center mt-12">
+                <button onclick="document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })" class="px-8 py-4 rounded-lg font-bold btn-glow text-white text-lg transition-all duration-300">
+                    Get a Quote Today
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio / Featured Showcase -->
+    <section id="portfolio" class="py-20 px-4 bg-gradient-to-b from-slate-950 to-slate-900">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold mb-6">Featured Work</h2>
+                <p class="text-xl text-gray-400 max-w-3xl mx-auto">
+                    Beautiful, high-converting websites across industries. All built with speed, security, and simplicity in mind.
+                </p>
+            </div>
+
+            <div class="relative">
+                <!-- Slider Container -->
+                <div class="overflow-hidden">
+                    <div class="portfolio-slider flex transition-transform duration-500 ease-out" style="transform: translateX(0);">
+                        <!-- Portfolio Item 1 -->
+                        <div class="portfolio-slide min-w-full md:min-w-1/3 px-4">
+                            <div class="glow-card glass rounded-xl p-6 border-2 border-indigo-500/30 h-full">
+                                <h3 class="text-xl font-bold mb-2">Professional Services Agency</h3>
+                                <p class="text-gray-400 mb-4">A sleek, modern corporate site showcasing services, team, and case studies.</p>
+                                <div class="flex gap-2 flex-wrap">
+                                    <span class="text-xs bg-indigo-500/20 text-indigo-300 px-3 py-1 rounded-full">Responsive</span>
+                                    <span class="text-xs bg-emerald-500/20 text-emerald-300 px-3 py-1 rounded-full">Fast</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Portfolio Item 2 -->
+                        <div class="portfolio-slide min-w-full md:min-w-1/3 px-4">
+                            <div class="glow-card glass rounded-xl p-6 border-2 border-indigo-500/30 h-full">
+                                <h3 class="text-xl font-bold mb-2">Fashion Retail Platform</h3>
+                                <p class="text-gray-400 mb-4">High-converting product showcase with cart, checkout, and payment integration.</p>
+                                <div class="flex gap-2 flex-wrap">
+                                    <span class="text-xs bg-indigo-500/20 text-indigo-300 px-3 py-1 rounded-full">E-commerce</span>
+                                    <span class="text-xs bg-emerald-500/20 text-emerald-300 px-3 py-1 rounded-full">Payments</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Portfolio Item 3 -->
+                        <div class="portfolio-slide min-w-full md:min-w-1/3 px-4">
+                            <div class="glow-card glass rounded-xl p-6 border-2 border-indigo-500/30 h-full">
+                                <h3 class="text-xl font-bold mb-2">Creative Professional Portfolio</h3>
+                                <p class="text-gray-400 mb-4">Stunning portfolio showcasing work, projects, testimonials, and contact form.</p>
+                                <div class="flex gap-2 flex-wrap">
+                                    <span class="text-xs bg-indigo-500/20 text-indigo-300 px-3 py-1 rounded-full">Portfolio</span>
+                                    <span class="text-xs bg-emerald-500/20 text-emerald-300 px-3 py-1 rounded-full">Modern</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Portfolio Item 4 -->
+                        <div class="portfolio-slide min-w-full md:min-w-1/3 px-4">
+                            <div class="glow-card glass rounded-xl p-6 border-2 border-indigo-500/30 h-full">
+                                <h3 class="text-xl font-bold mb-2">Software Service Landing</h3>
+                                <p class="text-gray-400 mb-4">High-converting SaaS landing page with pricing tiers, features, and free trial CTA.</p>
+                                <div class="flex gap-2 flex-wrap">
+                                    <span class="text-xs bg-indigo-500/20 text-indigo-300 px-3 py-1 rounded-full">SaaS</span>
+                                    <span class="text-xs bg-emerald-500/20 text-emerald-300 px-3 py-1 rounded-full">Conversion</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Portfolio Item 5 -->
+                        <div class="portfolio-slide min-w-full md:min-w-1/3 px-4">
+                            <div class="glow-card glass rounded-xl p-6 border-2 border-indigo-500/30 h-full">
+                                <h3 class="text-xl font-bold mb-2">Restaurant & Menu Showcase</h3>
+                                <p class="text-gray-400 mb-4">Beautiful restaurant website with menu, reservations, gallery, and location info.</p>
+                                <div class="flex gap-2 flex-wrap">
+                                    <span class="text-xs bg-indigo-500/20 text-indigo-300 px-3 py-1 rounded-full">Hospitality</span>
+                                    <span class="text-xs bg-emerald-500/20 text-emerald-300 px-3 py-1 rounded-full">Booking</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Portfolio Item 6 -->
+                        <div class="portfolio-slide min-w-full md:min-w-1/3 px-4">
+                            <div class="glow-card glass rounded-xl p-6 border-2 border-indigo-500/30 h-full">
+                                <h3 class="text-xl font-bold mb-2">Online Learning Hub</h3>
+                                <p class="text-gray-400 mb-4">Course catalog, instructor profiles, student dashboard, and progress tracking.</p>
+                                <div class="flex gap-2 flex-wrap">
+                                    <span class="text-xs bg-indigo-500/20 text-indigo-300 px-3 py-1 rounded-full">Education</span>
+                                    <span class="text-xs bg-emerald-500/20 text-emerald-300 px-3 py-1 rounded-full">Interactive</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Slider Controls -->
+                <button onclick="portfolioSliderPrev()" class="absolute left-0 top-1/2 -translate-y-1/2 z-10 -ml-6 md:-ml-12 bg-indigo-500/80 hover:bg-indigo-500 text-white rounded-full p-3 transition">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                    </svg>
+                </button>
+                <button onclick="portfolioSliderNext()" class="absolute right-0 top-1/2 -translate-y-1/2 z-10 -mr-6 md:-mr-12 bg-indigo-500/80 hover:bg-indigo-500 text-white rounded-full p-3 transition">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="py-20 px-4 bg-gradient-to-b from-slate-900 to-slate-950">
+        <div class="max-w-4xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold mb-6">Frequently Asked Questions</h2>
+                <p class="text-xl text-gray-400">
+                    Everything you need to know about our services and pricing.
+                </p>
+            </div>
+
+            <div class="space-y-4">
+                <!-- FAQ Item 1 -->
+                <div class="glass rounded-xl border-2 border-indigo-500/30">
+                    <button class="accordion-btn w-full p-6 flex items-center justify-between hover:bg-slate-800/50 transition" data-accordion="0">
+                        <span class="text-lg font-bold text-left">Why is the $100 tier hosted on GitHub Pages?</span>
+                        <svg class="w-6 h-6 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+                        </svg>
+                    </button>
+                    <div class="accordion-content px-6 pb-6">
+                        <p class="text-gray-400">
+                            GitHub Pages is a bulletproof, enterprise-grade hosting platform maintained by Microsoft. It's faster than traditional shared hosting, completely secure with built-in SSL, and costs zero dollars per month. By eliminating bloated hosting providers, we pass those savings directly to you while maintaining professional-grade infrastructure.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 2 -->
+                <div class="glass rounded-xl border-2 border-indigo-500/30">
+                    <button class="accordion-btn w-full p-6 flex items-center justify-between hover:bg-slate-800/50 transition" data-accordion="1">
+                        <span class="text-lg font-bold text-left">What's the difference between the $100 and $150 packages?</span>
+                        <svg class="w-6 h-6 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+                        </svg>
+                    </button>
+                    <div class="accordion-content px-6 pb-6">
+                        <p class="text-gray-400 mb-4">
+                            The $100 Starter Package includes a fully functional website deployed on GitHub Pages with a gh-pages URL (yourname.github.io).
+                        </p>
+                        <p class="text-gray-400 mb-4">
+                            The $150 Custom Domain Package includes everything in the Starter Package PLUS:
+                        </p>
+                        <ul class="space-y-2 text-gray-400 ml-4">
+                            <li>• Custom domain setup (.com, .net, .org)</li>
+                            <li>• Complete DNS configuration</li>
+                            <li>• SSL/HTTPS on your custom domain</li>
+                            <li>• Domain mapping and routing</li>
+                        </ul>
+                        <p class="text-gray-400 mt-4">
+                            For $15 more, you get a professional branded domain instead of a GitHub URL.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 3 -->
+                <div class="glass rounded-xl border-2 border-indigo-500/30">
+                    <button class="accordion-btn w-full p-6 flex items-center justify-between hover:bg-slate-800/50 transition" data-accordion="2">
+                        <span class="text-lg font-bold text-left">How long does a website take to build?</span>
+                        <svg class="w-6 h-6 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+                        </svg>
+                    </button>
+                    <div class="accordion-content px-6 pb-6">
+                        <p class="text-gray-400">
+                            For the $100 and $150 packages, turnaround time is typically <strong>3-7 business days</strong> from project kickoff to live deployment. We gather your content, design the layout, and deploy directly to GitHub Pages.
+                        </p>
+                        <p class="text-gray-400 mt-4">
+                            For complex custom projects, timeline depends on scope and feature complexity. We'll provide a detailed timeline estimate during the consultation phase.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 4 -->
+                <div class="glass rounded-xl border-2 border-indigo-500/30">
+                    <button class="accordion-btn w-full p-6 flex items-center justify-between hover:bg-slate-800/50 transition" data-accordion="3">
+                        <span class="text-lg font-bold text-left">What determines the cost for custom projects?</span>
+                        <svg class="w-6 h-6 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+                        </svg>
+                    </button>
+                    <div class="accordion-content px-6 pb-6">
+                        <p class="text-gray-400 mb-4">
+                            Custom project pricing is based on three main factors:
+                        </p>
+                        <ul class="space-y-2 text-gray-400 ml-4 mb-4">
+                            <li><strong>1. Feature Complexity</strong> - Dynamic pages, databases, APIs, real-time updates</li>
+                            <li><strong>2. Custom Development Hours</strong> - Complex logic, integrations, testing</li>
+                            <li><strong>3. Deployment & Hosting</strong> - Custom servers, managed databases, scaling requirements</li>
+                        </ul>
+                        <p class="text-gray-400">
+                            Use our calculator above to estimate costs for common add-ons, or contact us for a full custom quote.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 5 -->
+                <div class="glass rounded-xl border-2 border-indigo-500/30">
+                    <button class="accordion-btn w-full p-6 flex items-center justify-between hover:bg-slate-800/50 transition" data-accordion="4">
+                        <span class="text-lg font-bold text-left">Are there any hidden monthly fees?</span>
+                        <svg class="w-6 h-6 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+                        </svg>
+                    </button>
+                    <div class="accordion-content px-6 pb-6">
+                        <p class="text-gray-400 mb-4">
+                            <strong>Absolutely not.</strong> Our pricing is completely transparent and all-inclusive:
+                        </p>
+                        <ul class="space-y-2 text-gray-400 ml-4">
+                            <li>✓ No monthly hosting fees</li>
+                            <li>✓ No renewal fees</li>
+                            <li>✓ No setup charges</li>
+                            <li>✓ No surprise upgrades</li>
+                            <li>✓ Your code is yours forever</li>
+                        </ul>
+                        <p class="text-gray-400 mt-4">
+                            The only recurring expense might be your custom domain (if chosen), which you control and manage directly with your registrar.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 6 -->
+                <div class="glass rounded-xl border-2 border-indigo-500/30">
+                    <button class="accordion-btn w-full p-6 flex items-center justify-between hover:bg-slate-800/50 transition" data-accordion="5">
+                        <span class="text-lg font-bold text-left">Can I get updates or modifications after launch?</span>
+                        <svg class="w-6 h-6 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+                        </svg>
+                    </button>
+                    <div class="accordion-content px-6 pb-6">
+                        <p class="text-gray-400">
+                            Yes! After your site launches, you'll own the complete source code on GitHub. You can make edits yourself or hire us for future updates. We offer affordable maintenance packages for ongoing changes, new features, and platform updates.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Get In Touch Section -->
+    <section id="contact" class="py-20 px-4 bg-gradient-to-b from-slate-950 to-slate-900">
+        <div class="max-w-4xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold mb-6">Get In Touch</h2>
+                <p class="text-xl text-gray-400 mb-8">
+                    Have a question or ready to start your project? Reach out to us directly.
+                </p>
+            </div>
+
+            <div class="flex justify-center">
+                <div class="glass rounded-xl p-8 border-2 border-emerald-500/30 max-w-md w-full">
+                    <div class="text-center">
+                        <p class="text-gray-300 text-lg mb-6 font-bold">
+                            Get In Touch
+                        </p>
+                        <a href="mailto:prodesignshub@gmail.com" class="inline-flex items-center gap-3 btn-glow px-8 py-4 rounded-lg font-bold text-white text-lg transition-all duration-300 hover:scale-105">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                            </svg>
+                            prodesignshub@gmail.com
+                        </a>
+                        <p class="text-gray-400 text-sm mt-6">
+                            Send us an email and we'll respond within 24 hours
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <p class="text-gray-400 text-sm text-center mt-8">
+                Available 24/7 • Response time: Within 24 hours
+            </p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="border-t border-indigo-500/20 bg-slate-950/80 backdrop-blur-sm">
+        <div class="max-w-6xl mx-auto px-4 py-16">
+            <div class="grid md:grid-cols-4 gap-12 mb-12">
+                <!-- Brand -->
+                <div>
+                    <div class="flex items-center gap-2 mb-4">
+                        <div class="w-10 h-10 bg-gradient-to-br from-indigo-500 to-emerald-500 rounded-lg flex items-center justify-center font-bold text-white">
+                            HA
+                        </div>
+                        <span class="text-lg font-bold gradient-text">Harry Adam</span>
+                    </div>
+                    <p class="text-gray-400 text-sm">
+                        Professional websites at unbeatable prices. Fast. Secure. Affordable.
+                    </p>
+                </div>
+
+                <!-- Quick Links -->
+                <div>
+                    <h4 class="font-bold mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#pricing" class="text-gray-400 hover:text-indigo-400 text-sm transition">Pricing</a></li>
+                        <li><a href="#services" class="text-gray-400 hover:text-indigo-400 text-sm transition">Services</a></li>
+                        <li><a href="#portfolio" class="text-gray-400 hover:text-indigo-400 text-sm transition">Portfolio</a></li>
+                        <li><a href="#faq" class="text-gray-400 hover:text-indigo-400 text-sm transition">FAQ</a></li>
+                        <li><a href="#contact" class="text-gray-400 hover:text-indigo-400 text-sm transition">Contact</a></li>
+                    </ul>
+                </div>
+
+                <!-- Services -->
+                <div>
+                    <h4 class="font-bold mb-4">Services</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-indigo-400 text-sm transition">Web Design</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-indigo-400 text-sm transition">Development</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-indigo-400 text-sm transition">Custom Apps</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-indigo-400 text-sm transition">Maintenance</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact Info -->
+                <div>
+                    <h4 class="font-bold mb-4">Contact</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li class="text-gray-400">Email: <a href="mailto:prodesignshub@gmail.com" class="text-indigo-400 hover:text-indigo-300">prodesignshub@gmail.com</a></li>
+                        <li class="text-gray-400 mt-4">Available 24/7 for inquiries</li>
+                        <li class="text-gray-400 text-xs">Response time: Within 24 hours</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Divider -->
+            <div class="border-t border-indigo-500/10 pt-8">
+                <!-- Bottom Footer -->
+                <div class="flex flex-col md:flex-row justify-between items-center gap-4">
+                    <p class="text-gray-500 text-sm">
+                        © 2024 Harry Adam. All rights reserved. | Deployed on GitHub Pages
+                    </p>
+                    <div class="flex gap-6">
+                        <a href="#" class="text-gray-400 hover:text-indigo-400 transition">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M8.29 20v-7.21H5.413v-2.622h2.877V7.487c0-2.889 1.775-4.444 4.272-4.444 1.213 0 2.253.091 2.556.131v2.967h-1.756c-1.376 0-1.644.655-1.644 1.614v2.113h3.287l-4.282 2.622V20h-3.813z"/></svg>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-indigo-400 transition">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2s9 5 20 5a9.5 9.5 0 00-9-5.5c4.75 2.25 7-7 7-7a4.5 4.5 0 00-8-3v-1z"/></svg>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-indigo-400 transition">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating CTA Button -->
+    <button onclick="document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })" class="floating-cta btn-glow w-16 h-16 rounded-full flex items-center justify-center text-white font-bold text-2xl transition-all hover:scale-110 hidden md:flex" aria-label="Get started">
+        ✉️
+    </button>
+
+    <!-- JavaScript -->
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('active');
+        });
+
+        // Close mobile menu when link is clicked
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('active');
+            });
+        });
+
+        // FAQ Accordion
+        document.querySelectorAll('.accordion-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const accordionId = this.dataset.accordion;
+                const content = this.nextElementSibling;
+                const icon = this.querySelector('svg');
+
+                // Close other accordions
+                document.querySelectorAll('.accordion-content').forEach((acc, index) => {
+                    if (index != accordionId) {
+                        acc.classList.remove('active');
+                        document.querySelectorAll('.accordion-btn')[index].querySelector('svg').classList.remove('rotate-180');
+                    }
+                });
+
+                // Toggle current accordion
+                content.classList.toggle('active');
+                icon.classList.toggle('rotate-180');
+            });
+        });
+
+        // Price Calculator
+        document.querySelectorAll('.feature-checkbox').forEach(checkbox => {
+            checkbox.addEventListener('change', updatePrice);
+        });
+
+        function updatePrice() {
+            let basePrice = 500;
+            let totalPrice = basePrice;
+
+            document.querySelectorAll('.feature-checkbox:checked').forEach(checkbox => {
+                totalPrice += parseInt(checkbox.dataset.price);
+            });
+
+            document.getElementById('calc-price').textContent = totalPrice.toLocaleString();
+        }
+
+        // Smooth Scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Show floating CTA button on scroll
+        window.addEventListener('scroll', () => {
+            const floatingCta = document.querySelector('.floating-cta');
+            const contactSection = document.getElementById('contact');
+            const contactRect = contactSection.getBoundingClientRect();
+
+            if (contactRect.top > 500) {
+                floatingCta.classList.remove('hidden');
+            } else {
+                floatingCta.classList.add('hidden');
+            }
+        });
+
+        // Add fade-in animation on page load
+        window.addEventListener('load', () => {
+            document.querySelectorAll('.fade-in').forEach((el, index) => {
+                el.style.animationDelay = `${index * 0.1}s`;
+            });
+        });
+
+        // Prevent input placeholder flashing on mobile
+        if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+            document.querySelectorAll('input, textarea, select').forEach(el => {
+                el.addEventListener('focus', function() {
+                    this.blur();
+                    this.focus();
+                });
+            });
+        }
+
+        // Portfolio Slider
+        let portfolioIndex = 0;
+        const portfolioSlides = document.querySelectorAll('.portfolio-slide');
+        const portfolioSlider = document.querySelector('.portfolio-slider');
+
+        function updatePortfolioSlider() {
+            const slideWidth = 100 / 1; // Full width on mobile
+            const offset = portfolioIndex * -slideWidth;
+            
+            if (window.innerWidth >= 768) {
+                // Show 3 items on medium screens
+                portfolioSlider.style.transform = `translateX(${(portfolioIndex % 4) * -33.333}%)`;
+            } else {
+                portfolioSlider.style.transform = `translateX(${offset}%)`;
+            }
+        }
+
+        function portfolioSliderNext() {
+            portfolioIndex = (portfolioIndex + 1) % portfolioSlides.length;
+            updatePortfolioSlider();
+        }
+
+        function portfolioSliderPrev() {
+            portfolioIndex = (portfolioIndex - 1 + portfolioSlides.length) % portfolioSlides.length;
+            updatePortfolioSlider();
+        }
+
+        // Services Slider
+        let servicesIndex = 0;
+        const servicesSlides = document.querySelectorAll('.services-slide');
+        const servicesSlider = document.querySelector('.services-slider');
+
+        function updateServicesSlider() {
+            const slideWidth = 100 / 1; // Full width on mobile
+            const offset = servicesIndex * -slideWidth;
+            
+            if (window.innerWidth >= 768) {
+                // Show 2 items on medium screens
+                servicesSlider.style.transform = `translateX(${(servicesIndex % 1) * -50}%)`;
+            } else {
+                servicesSlider.style.transform = `translateX(${offset}%)`;
+            }
+        }
+
+        function servicesSliderNext() {
+            servicesIndex = (servicesIndex + 1) % servicesSlides.length;
+            updateServicesSlider();
+        }
+
+        function servicesSliderPrev() {
+            servicesIndex = (servicesIndex - 1 + servicesSlides.length) % servicesSlides.length;
+            updateServicesSlider();
+        }
+
+        // Handle window resize
+        window.addEventListener('resize', () => {
+            updatePortfolioSlider();
+            updateServicesSlider();
+        });
+    </script>
+</body>
+</html>
